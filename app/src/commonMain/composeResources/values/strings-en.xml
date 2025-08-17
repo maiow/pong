@@ -1,5 +1,4 @@
 <resources>
     <string name="app_name">Pong Game</string>
     <string name="score_text">Score: %1$d</string>
-    <string name="init_score_text">Score: 0</string>
 </resources>
