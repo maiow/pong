@@ -1,0 +1,6 @@
+<resources>
+    <color name="background">#222831</color>
+    <color name="paddle">#00adb5</color>
+    <color name="ball">#ff5722</color>
+    <color name="scoreText">#ffffff</color>
+</resources>
