@@ -57,9 +57,10 @@ kotlin {
                 //implementation(libs.ktor.client.darwin)
             }
         }
-//        desktopMain.dependencies {
-//
-//        }
+        val desktopMain by getting
+        desktopMain.dependencies {
+            implementation(compose.desktop.currentOs)
+        }
     }
 }
 
@@ -73,7 +74,7 @@ android {
 
     defaultConfig {
         applicationId = "com.rp.ponggame"
-        minSdk = 35
+        minSdk = 21
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
