@@ -15,24 +15,25 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
+import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 import ponggame.app.generated.resources.Res
 import ponggame.app.generated.resources.score_text
 
-@OptIn(org.jetbrains.compose.resources.ExperimentalResourceApi::class)
+@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun PongGame(
     screenWidth: Float = 400f,
     screenHeight: Float = 700f
 ) {
-    val backgroundColor = Color(0xFF222831)
-    val paddleColor = Color(0xFF00ADB5)
-    val ballColor = Color(0xFFFF5722)
 
     var state by remember { mutableStateOf(PongGameState(screenWidth, screenHeight)) }
     var lastPaddleCenter by remember { mutableStateOf(screenWidth / 2f) }
@@ -48,7 +49,7 @@ fun PongGame(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(backgroundColor)
+                .background(PongDarkColorScheme.background)
                 .pointerInput(Unit) {
                     awaitPointerEventScope {
                         while (true) {
@@ -63,13 +64,16 @@ fun PongGame(
                 }
         ) {
             Canvas(modifier = Modifier.fillMaxSize()) {
-                drawRect(
-                    color = paddleColor,
+                //paddle
+                drawRoundRect(
+                    color = PongDarkColorScheme.secondary,
                     topLeft = Offset(state.paddleX, state.paddleY),
-                    size = androidx.compose.ui.geometry.Size(state.paddleWidth, state.paddleHeight)
+                    size = Size(state.paddleWidth, state.paddleHeight),
+                    cornerRadius = CornerRadius(12f, 12f)
                 )
+                //ball
                 drawCircle(
-                    color = ballColor,
+                    color = PongDarkColorScheme.tertiary,
                     radius = state.ballRadius,
                     center = Offset(state.ballX, state.ballY)
                 )
@@ -82,7 +86,12 @@ fun PongGame(
                     .align(Alignment.TopCenter)
                     .padding(top = 24.dp)
             )
-
         }
     }
+}
+
+@Composable
+@Preview
+fun PongGamePreview() {
+    PongGame()
 }
