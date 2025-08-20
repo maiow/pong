@@ -27,5 +27,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "PongGame"
-include(":app")
+include(":composeApp")
  

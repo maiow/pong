@@ -25,8 +25,8 @@ import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import ponggame.app.generated.resources.Res
-import ponggame.app.generated.resources.score_text
+import ponggame.composeapp.generated.resources.Res
+import ponggame.composeapp.generated.resources.score_text
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable

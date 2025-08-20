@@ -1,3 +1,4 @@
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.konan.target.HostManager
@@ -25,9 +26,6 @@ kotlin {
             iosTarget.binaries.framework {
                 baseName = "ComposeApp"
                 isStatic = true
-                binaryOption("bundleId", "com.rp.ponggame.framework")
-                binaryOption("teamId", "")
-                binaryOption("deploymentTarget", "14.1")
             }
         }
         jvm("desktop")
@@ -49,7 +47,6 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(compose.materialIconsExtended)
 
-            implementation(libs.cupertino)
             implementation(libs.resources)
         }
         if (HostManager.hostIsMac) {
@@ -96,7 +93,20 @@ android {
     buildFeatures {
         compose = true
     }
-    dependencies {
-        debugImplementation(compose.uiTooling)
+}
+
+dependencies {
+    debugImplementation(compose.uiTooling)
+}
+
+compose.desktop {
+    application {
+        mainClass = "com.rp.ponggame.DesktopMainKt"
+
+        nativeDistributions {
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            packageName = "com.rp.ponggame"
+            packageVersion = "1.0.0"
+        }
     }
 }
