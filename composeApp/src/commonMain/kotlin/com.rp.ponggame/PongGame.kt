@@ -63,7 +63,9 @@ fun PongGame(
                     }
                 }
         ) {
-            Canvas(modifier = Modifier.fillMaxSize()) {
+            Canvas(
+                modifier = Modifier.fillMaxSize()
+            ) {
                 //paddle
                 drawRoundRect(
                     color = PongDarkColorScheme.secondary,
@@ -84,7 +86,7 @@ fun PongGame(
                 style = MaterialTheme.typography.headlineSmall,
                 modifier = Modifier
                     .align(Alignment.TopCenter)
-                    .padding(top = 24.dp)
+                    .padding(top = 64.dp)
             )
         }
     }

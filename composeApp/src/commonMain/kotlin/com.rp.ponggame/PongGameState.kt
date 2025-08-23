@@ -11,7 +11,7 @@ class PongGameState(
     val screenHeight: Float,
 ) {
     var paddleWidth by mutableStateOf(220f)
-    var paddleHeight by mutableStateOf(24f)
+    var paddleHeight by mutableStateOf(32f)
     var paddleX by mutableStateOf((screenWidth - paddleWidth) / 2f)
     val paddleY = screenHeight - paddleHeight - 40f
 
